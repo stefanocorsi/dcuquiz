@@ -82,6 +82,6 @@ For this project I will use:
  - https://medium.com/@nancydo7/ruby-on-rails-crud-tutorial-899117710c7a
  
  **Images (from from Unsplash.com)**
- https://unsplash.com/photos/-uHVRvDr7pg (https://unsplash.com/@brookecagle)
- https://unsplash.com/photos/QckxruozjRg (https://unsplash.com/@anniespratt)
- https://unsplash.com/photos/iQPr1XkF5F0 (https://unsplash.com/@javotrueba)
+ - https://unsplash.com/photos/-uHVRvDr7pg (https://unsplash.com/@brookecagle)
+ - https://unsplash.com/photos/QckxruozjRg (https://unsplash.com/@anniespratt)
+ - https://unsplash.com/photos/iQPr1XkF5F0 (https://unsplash.com/@javotrueba)
