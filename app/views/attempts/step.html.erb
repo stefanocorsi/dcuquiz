@@ -1,4 +1,5 @@
-<h2><%= @question.question_text %></h2>
+<h2>Question <%= @question_num %></h2>
+<h3><%= @question.question_text %></h3>
 
 <%= form_for @answer, url: next_wizard_path, :method => :get do |f| %>
 

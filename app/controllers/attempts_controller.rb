@@ -10,10 +10,10 @@ class AttemptsController < ApplicationController
     session[:quiz_id] = nil if params[:init]
     @quiz = PublicQuiz.find(session[:quiz_id] || params[:quiz])
 
-    question_num = step.to_s.split("_")[1].to_i
-    question_prev = step.to_s == "finish" ? @quiz.public_questions.count : question_num - 1
+    @question_num = step.to_s.split("_")[1].to_i
+    question_prev = step.to_s == "finish" ? @quiz.public_questions.count : @question_num - 1
 
-    @question = @quiz.public_questions[question_num - 1]
+    @question = @quiz.public_questions[@question_num - 1]
     @prev_question = @quiz.public_questions[question_prev - 1] if question_prev > 0
     session[:quiz_id] = @quiz.id
 
