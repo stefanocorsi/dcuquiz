@@ -26,3 +26,19 @@ a.btn:visited {
 a.btn-default:visited {
   color: inherit;
 }
+
+a.nav-link {
+  color: rgb(255,255,255, 0.5);
+}
+
+a.nav-link:visited {
+  color: rgb(255,255,255, 0.5);
+}
+
+a.nav-link:hover {
+  background: initial;
+}
+
+.bg-dark {
+  background-color: #0c3b6f !important;
+}
