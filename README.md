@@ -81,6 +81,10 @@ For this project I will use:
 
 ![immagine](https://user-images.githubusercontent.com/6546984/163734191-359f1381-e2d0-4cbe-a1cf-ec921a6d6766.png)
 
+## Entity-relationship diagram
+
+![dcutest-er drawio](https://user-images.githubusercontent.com/6546984/163734253-69b2d142-7952-4a4c-9b10-e18b9caaa1f3.png)
+
 ## References
 
 **Authentication**
