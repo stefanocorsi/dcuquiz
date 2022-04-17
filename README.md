@@ -73,6 +73,10 @@ For this project I will use:
  - Devise authentication framework
  - Faker data mocking solution
 
+## Entity diagram
+
+![dcutest-entities drawio](https://user-images.githubusercontent.com/6546984/163733929-07443c5d-8e36-4ef5-a450-5728683227b2.png)
+
 ## References
 
 **Authentication**
