@@ -3,7 +3,8 @@ class CreateAttempts < ActiveRecord::Migration[6.1]
     create_table :attempts, id: :bigint, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
       t.datetime :time_started
       t.datetime :time_ended
-
+      t.integer :score, null: false, default: 0
+      t.string :result, limit: 1, default: 'N'
       t.timestamps
     end
 

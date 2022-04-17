@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2022_04_17_171447) do
     t.bigint "quiz_id"
     t.datetime "time_started"
     t.datetime "time_ended"
+    t.integer "score", default: 0, null: false
+    t.string "result", limit: 1, default: "N"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["quiz_id"], name: "attempts2quiz"
