@@ -19,6 +19,14 @@
     <%= form.number_field :pass_threshold %>
   </div>
 
+  <div class="field">
+    <%= form.number_field :allowed_time %>
+  </div>
+
+  <div class="field">
+    <%= form.check_box :allow_retake %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -3,6 +3,15 @@
   <strong>Pass threshold:</strong>
   <%= @quiz.pass_threshold %>
 </p>
+<p>
+  <strong>Allowed time to complete:</strong>
+  <%= @quiz.allowed_time %>
+</p>
+<p>
+  <strong>Is it possible to re-take the Quiz?:</strong>
+  <%= @quiz.allow_retake ? "Yes" : "No" %>
+</p>
+
 
 <% if @quiz.questions.present? %>
 <h2>Questions</h2>

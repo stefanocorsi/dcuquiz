@@ -64,7 +64,9 @@ ActiveRecord::Schema.define(version: 2022_04_17_171447) do
   create_table "quizzes", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
-    t.integer "pass_threshold"
+    t.integer "pass_threshold", default: 40, null: false
+    t.integer "allowed_time", default: 20, null: false
+    t.boolean "allow_retake", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "quizzes2user"
