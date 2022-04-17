@@ -46,3 +46,7 @@ a.nav-link:hover {
 .bg-dark {
   background-color: #0c3b6f !important;
 }
+
+.form-label {
+  font-weight: bold;
+}
