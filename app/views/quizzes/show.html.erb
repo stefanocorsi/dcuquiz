@@ -81,7 +81,7 @@
 %>
 
   <div class="field">
-    <%= form.text_area :question_text, value: question["question_text"], cols: 50, rows: 10 %>
+    <%= form.text_area :question_text, placeholder: "Enter your beautiful question here. For example: how many days are there in a year?", value: question["question_text"], cols: 50, rows: 10 %>
   </div>
 <%
   for i in 1..5 do
