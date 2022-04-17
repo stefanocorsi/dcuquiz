@@ -10,8 +10,8 @@ class AttemptsController < ApplicationController
     session[:quiz_id] = nil if params[:init]
     @quiz = PublicQuiz.find(session[:quiz_id] || params[:quiz])
 
-    @question_num = step.to_s.split("_")[1].to_i
-    question_prev = step.to_s == "finish" ? @quiz.public_questions.count : @question_num - 1
+    @question_num = ["finish", "completed"].include?(step.to_s) ? @quiz.public_questions.count : step.to_s.split("_")[1].to_i
+    question_prev = (step.to_s == "finish") ? @quiz.public_questions.count : @question_num - 1
 
     @question = @quiz.public_questions[@question_num - 1]
     @prev_question = @quiz.public_questions[question_prev - 1] if question_prev > 0
@@ -31,13 +31,28 @@ class AttemptsController < ApplicationController
     end
     @prev_answer = Answer.where(attempt_id: @attempt.id, question_id: @prev_question.id).first if @prev_question
 
-    if (@prev_answer) && params[:answer]
-      @prev_answer.alt_1 = params[:answer][:alt_1]
-      @prev_answer.alt_2 = params[:answer][:alt_2]
-      @prev_answer.alt_3 = params[:answer][:alt_3]
-      @prev_answer.alt_4 = params[:answer][:alt_4]
-      @prev_answer.alt_5 = params[:answer][:alt_5]
+    if @attempt.completed?
+       redirect_to :root
+       return
+    end
+
+    if (@prev_answer) && params[:answer] && !@attempt.completed?
+      @prev_answer.alt_1 = params[:answer][:alt_1] || 0
+      @prev_answer.alt_2 = params[:answer][:alt_2] || 0
+      @prev_answer.alt_3 = params[:answer][:alt_3] || 0
+      @prev_answer.alt_4 = params[:answer][:alt_4] || 0
+      @prev_answer.alt_5 = params[:answer][:alt_5] || 0
       @prev_answer.save!
+    end
+
+    if step.to_s == "completed"
+      @attempt.time_ended = Time.now
+      @time_taken = ((@attempt.time_ended - @attempt.time_started) / 60).round
+      @attempt.result = 'F' if (@time_taken > @quiz.allowed_time)
+      @attempt.score = @attempt.get_score
+      @attempt.result = 'F' if @attempt.score < @quiz.pass_threshold
+      @attempt.result = 'P' if @attempt.score >= @quiz.pass_threshold
+      @attempt.save!
     end
 
     options = { template: ["finish", "completed"].include?(step.to_s) ? "attempts/#{step.to_s}" : "attempts/step" }
