@@ -83,26 +83,16 @@
   <div class="field">
     <%= form.text_area :question_text, value: question["question_text"], cols: 50, rows: 10 %>
   </div>
-  <div class="field">
-    <%= form.text_field :alt_1, value: question["alt_1"], label: "Alternative 1" %>
-    <%= form.check_box :check_1, { checked: question["check_1"] == "1", label: "Correct (yes/no)", inline: true } %>
+<%
+  for i in 1..5 do
+%>
+  <div class="field" style="margin-bottom: 25px;">
+    <%= form.text_field "alt_#{i}".to_sym, value: question["alt_#{i}"], label: "Alternative #{i}" %>
+    <%= form.check_box "check_#{i}".to_sym, { checked: question["check_#{i}"] == "1", label: "Correct (yes/no)", inline: true } %>
   </div>
-  <div class="field">
-    <%= form.text_field :alt_2, value: question["alt_2"], label: "Alternative 2" %>
-    <%= form.check_box :check_2, { checked: question["check_2"] == "1", label: "Correct (yes/no)", inline: true } %>
-  </div>
-  <div class="field">
-    <%= form.text_field :alt_3, value: question["alt_3"], label: "Alternative 3" %>
-    <%= form.check_box :check_3, { checked: question["check_3"] == "1", label: "Correct (yes/no)", inline: true } %>
-  </div>
-  <div class="field">
-    <%= form.text_field :alt_4, value: question["alt_4"], label: "Alternative 4" %>
-    <%= form.check_box :check_4, { checked: question["check_4"] == "1", label: "Correct (yes/no)", inline: true } %>
-  </div>
-  <div class="field">
-    <%= form.text_field :alt_5, value: question["alt_5"], label: "Alternative 5" %>
-    <%= form.check_box :check_5, { checked: question["check_5"] == "1", label: "Correct (yes/no)", inline: true } %>
-  </div>
+<%
+  end
+%>
   <div class="field">
     <%= form.number_field :points, value: question["points"] %>
   </div>
