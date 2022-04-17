@@ -77,6 +77,10 @@ For this project I will use:
 
 ![dcutest-entities drawio](https://user-images.githubusercontent.com/6546984/163733929-07443c5d-8e36-4ef5-a450-5728683227b2.png)
 
+## Relationship matrix
+
+![immagine](https://user-images.githubusercontent.com/6546984/163734191-359f1381-e2d0-4cbe-a1cf-ec921a6d6766.png)
+
 ## References
 
 **Authentication**
