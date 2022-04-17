@@ -1,0 +1,112 @@
+<h2>Quiz: <%= @quiz.name %></h2>
+<p>
+  <strong>Pass threshold:</strong>
+  <%= @quiz.pass_threshold %>
+</p>
+
+<% if @quiz.questions.present? %>
+<h2>Questions</h2>
+<table  class="table">
+  <thead>
+    <th>
+      Question Text
+    </th>
+    <th>
+      Points
+    </th>
+    <th>
+      Alternative 1
+    </th>
+    <th>
+      Alternative 2
+    </th>
+    <th>
+      Alternative 3
+    </th>
+    <th>
+      Alternative 4
+    </th>
+    <th>
+      Alternative 5
+    </th>
+    <th>
+      Order
+    </th>
+    <th>
+      &nbsp;
+    </th>
+  </thead>
+<%= render @quiz.questions.order("sort_order") %>
+</table>
+<% end %>
+
+<h2>Add a question:</h2>
+<%= bootstrap_form_for([@quiz, question = @quiz.questions.build]) do |form| %>
+
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if flash[:errors] && flash[:errors].any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flash[:errors].count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li><%= error[0].humanize %> <%= error[1][0] %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%
+  question = flash[:question] if flash[:question]
+%>
+
+  <div class="field">
+    <%= form.text_area :question_text, value: question["question_text"], cols: 50, rows: 10 %>
+  </div>
+  <div class="field">
+    <%= form.text_field :alt_1, value: question["alt_1"], label: "Alternative 1" %>
+    <%= form.check_box :check_1, { checked: question["check_1"] == "1", label: "Correct (yes/no)", inline: true } %>
+  </div>
+  <div class="field">
+    <%= form.text_field :alt_2, value: question["alt_2"], label: "Alternative 2" %>
+    <%= form.check_box :check_2, { checked: question["check_2"] == "1", label: "Correct (yes/no)", inline: true } %>
+  </div>
+  <div class="field">
+    <%= form.text_field :alt_3, value: question["alt_3"], label: "Alternative 3" %>
+    <%= form.check_box :check_3, { checked: question["check_3"] == "1", label: "Correct (yes/no)", inline: true } %>
+  </div>
+  <div class="field">
+    <%= form.text_field :alt_4, value: question["alt_4"], label: "Alternative 4" %>
+    <%= form.check_box :check_4, { checked: question["check_4"] == "1", label: "Correct (yes/no)", inline: true } %>
+  </div>
+  <div class="field">
+    <%= form.text_field :alt_5, value: question["alt_5"], label: "Alternative 5" %>
+    <%= form.check_box :check_5, { checked: question["check_5"] == "1", label: "Correct (yes/no)", inline: true } %>
+  </div>
+  <div class="field">
+    <%= form.number_field :points, value: question["points"] %>
+  </div>
+  <div class="field">
+    <%= form.number_field :sort_order, value: question["sort_order"] %>
+  </div>
+
+  <%= form.hidden_field :quiz_id, value: @quiz.id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to "Edit", edit_quiz_path(@quiz) %> |
+<%= link_to "Back", quizzes_path %>

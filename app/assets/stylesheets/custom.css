@@ -1,0 +1,28 @@
+body {
+  margin: 0 !important;
+}
+
+a.delete_link {
+  color: red;
+}
+
+a.delete_link:visited {
+  color: red;
+}
+
+a.delete_link:hover {
+  background: initial;
+}
+
+.navbar, .navbar-brand {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+a.btn:visited {
+  color: white;
+}
+
+a.btn-default:visited {
+  color: inherit;
+}

@@ -1,0 +1,24 @@
+<h1>Fáilte daltaí! Choose a quiz!</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Quiz title</th>
+      <th>Number of questions</th>
+      <th>Total points</th>
+      <th>Pass threshold</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @quizzes.each do |quiz| %>
+      <tr>
+        <td><strong><%= quiz.name %></strong></td>
+        <td><%= quiz.public_questions.count %></td>
+        <td><%= quiz.public_questions.inject(0) { |sum,q| sum + q.points } %></td>
+        <td><%= quiz.pass_threshold %></td>
+        <td><%= link_to "Take Quiz", attempts_path(quiz: quiz.id, init: true), role: "button", class: "btn btn-small btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

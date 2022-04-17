@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dcuquiz</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="<%= root_url %>"><img src="/dcu-logo-red.png" style="max-height: 80px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= root_url %>">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= quizzes_url %>">Are you a tutor? Manage new quizzes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= public_quizzes_url %>">Are you a student? Take a quiz</a>
+          </li>
+        </ul>
+          <% if User.current_user %>
+          <a class="nav-link" href="#"><%= User.current_user.email %></a>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-link"  %>
+          <% else %>
+          <%= link_to "Login", new_user_session_path, method: :get, :class => "nav-link"  %>
+          <% end %>
+      </div>
+    </nav>
+
+    <%= yield :carousel %>
+
+    <main role="main" class="container" style="margin-top: 60px;">
+
+      <% if notice %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p id="alert"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+
+    </main>
+
+  </body>
+</html>

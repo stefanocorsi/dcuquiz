@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_started: 2022-04-17 18:29:35
+  time_ended: 2022-04-17 18:29:35
+  user: one
+  quiz: one
+
+two:
+  time_started: 2022-04-17 18:29:35
+  time_ended: 2022-04-17 18:29:35
+  user: two
+  quiz: two

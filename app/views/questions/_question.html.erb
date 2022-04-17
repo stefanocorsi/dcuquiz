@@ -1,0 +1,30 @@
+<tr>
+  <td>
+    <%= question.question_text %>
+  </td>
+  <td>
+    <%= question.points %>
+  </td>
+  <td>
+    <%= question.alt_1 %> <%= " <span class=\"text text-success\">(Correct)</span>".html_safe if question.check_1 %>
+  </td>
+  <td>
+    <%= question.alt_2 %> <%= " <span class=\"text text-success\">(Correct)</span>".html_safe if question.check_2 %>
+  </td>
+  <td>
+    <%= question.alt_3 %> <%= " <span class=\"text text-success\">(Correct)</span>".html_safe if question.check_3 %>
+  </td>
+  <td>
+    <%= question.alt_4 %> <%= " <span class=\"text text-success\">(Correct)</span>".html_safe if question.check_4 %>
+  </td>
+  <td>
+    <%= question.alt_5 %> <%= " <span class=\"text text-success\">(Correct)</span>".html_safe if question.check_5 %>
+  </td>
+  <td>
+    <%= question.sort_order %>
+  </td>
+  <td>
+    <%= link_to "Delete", [question.quiz, question],
+                 :method => :delete, data: { confirm: "Are you sure?" }, class: "delete_link" %>
+  </td>
+</tr>
