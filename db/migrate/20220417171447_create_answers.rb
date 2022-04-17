@@ -1,11 +1,11 @@
 class CreateAnswers < ActiveRecord::Migration[6.1]
   def change
     create_table :answers, id: :bigint, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-      t.string :alt_1
-      t.string :alt_2
-      t.string :alt_3
-      t.string :alt_4
-      t.string :alt_5
+      t.boolean :alt_1, null: false, default: false
+      t.boolean :alt_2, null: false, default: false
+      t.boolean :alt_3, null: false, default: false
+      t.boolean :alt_4, null: false, default: false
+      t.boolean :alt_5, null: false, default: false
       t.timestamps
     end
 

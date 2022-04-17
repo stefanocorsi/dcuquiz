@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2022_04_17_171447) do
     t.bigint "user_id"
     t.bigint "attempt_id"
     t.bigint "question_id"
-    t.string "alt_1"
-    t.string "alt_2"
-    t.string "alt_3"
-    t.string "alt_4"
-    t.string "alt_5"
+    t.boolean "alt_1", default: false, null: false
+    t.boolean "alt_2", default: false, null: false
+    t.boolean "alt_3", default: false, null: false
+    t.boolean "alt_4", default: false, null: false
+    t.boolean "alt_5", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["attempt_id"], name: "answers2attempt"
@@ -44,15 +44,15 @@ ActiveRecord::Schema.define(version: 2022_04_17_171447) do
     t.bigint "quiz_id"
     t.string "question_text"
     t.string "alt_1"
-    t.boolean "check_1"
+    t.boolean "check_1", default: false, null: false
     t.string "alt_2"
-    t.boolean "check_2"
+    t.boolean "check_2", default: false, null: false
     t.string "alt_3"
-    t.boolean "check_3"
+    t.boolean "check_3", default: false, null: false
     t.string "alt_4"
-    t.boolean "check_4"
+    t.boolean "check_4", default: false, null: false
     t.string "alt_5"
-    t.boolean "check_5"
+    t.boolean "check_5", default: false, null: false
     t.integer "points"
     t.integer "sort_order"
     t.datetime "created_at", precision: 6, null: false
