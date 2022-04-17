@@ -3,23 +3,27 @@
 
 <%= form_for @answer, url: next_wizard_path, :method => :get do |f| %>
 
-<table class="table">
+<div style="min-height: 400px;">
+  <table class="table">
 <%
   5.times do |i|
     if @question["alt_#{i + 1}"].present?
 %>
-  <tr>
-    <td><%= @question["alt_#{i + 1}"] %></td>
-    <td><%= f.check_box "alt_#{i + 1}".to_sym %></td>
-  </tr>
+    <tr>
+      <td><%= @question["alt_#{i + 1}"] %></td>
+      <td><%= f.check_box "alt_#{i + 1}".to_sym %></td>
+    </tr>
 <%
     end
   end
 %>
-</table>
+  </table>
+</div>
 
+<div style="float: right;">
 <%= link_to "Previous", previous_wizard_path, role: "button", class: "btn btn-small btn-default" %>
 <%= f.submit "Next", class: "btn btn-small btn-success" %>
+</div>
 
 <% end %>
 
