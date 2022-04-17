@@ -85,6 +85,32 @@ For this project I will use:
 
 ![dcutest-er drawio](https://user-images.githubusercontent.com/6546984/163734253-69b2d142-7952-4a4c-9b10-e18b9caaa1f3.png)
 
+## Installation
+
+1. Clone the git repository
+
+    ```git clone https://github.com/stefanocorsi/dcuquiz/```
+    
+    ```cd dcuquiz```
+
+2. Install required gems
+
+    ```bundle install```
+
+3. Create mysql database as root
+
+    ```cat sql/dcuquiz.sql | mysql -u root --default-character-set=utf8```
+
+4. Run db migrations
+
+    ```rails db:migrate```
+
+5. Load seeds
+
+    ```rails db:seed```
+
+And you should be up and running!
+
 ## References
 
 **Authentication**
